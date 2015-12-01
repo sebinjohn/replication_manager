@@ -1,0 +1,41 @@
+---
+- api:
+    user: bdr_api_user
+    pass: bdr_api_pass
+    version: 9
+    port: 7180
+    host: localhost
+- cluster:
+    peer_name: test_peer
+- source:
+    cluster_name: scoring
+    hive_service_name: hive
+    hdfs_service_name: hdfs01
+- destination:
+    cluster_name: cluster
+    hive_service_name: 'HIVE-1'
+    hdfs_service_name: 'hdfs1'
+    mapreduce_service_name: mapreduce1
+- replication:
+    strategy: STATIC
+    # When kerberos enabled, a username must be specified for every replication
+    user_name: acoe_omnsc_pintg
+- hdfs:
+    preserve_block_size: true
+    # If we want to preserve permissions, a super user should do the replication
+    # This scenario is not possible in our environment. So, we explicity make
+    # preserver_permissions=false
+    preserve_permissions: false
+    preserve_replication_count: true
+    remove_missing_files: true
+    skip_checksum_checks: false
+    skip_trash: false
+- hive:
+    replicate_impala_metadata: false
+- alert:
+    on_abort: true
+    on_fail: true
+    on_start: true
+    on_success: true
+- abort:
+    on_error: true

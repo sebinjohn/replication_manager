@@ -1,0 +1,104 @@
+---
+type: seq
+sequence:
+  - type: map
+    mapping:
+      api:
+        type: map
+        mapping:
+          user:
+            type: str
+          pass:
+            type: str
+          version:
+            type: int
+          port:
+            type: int
+          host:
+            type: str
+  - type: map
+    mapping:
+      cluster:
+        type: map
+        mapping:
+          peer_name:
+            type: str
+  - type: map
+    mapping:
+      source:
+        type: map
+        mapping:
+          cluster_name:
+            type: str
+          hive_service_name:
+            type: str
+          hdfs_service_name:
+            type: str
+  - type: map
+    mapping:
+      destination:
+        type: map
+        mapping:
+          cluster_name:
+            type: str
+          hive_service_name:
+            type: str
+          hdfs_service_name:
+            type: str
+          mapreduce_service_name:
+            type: str
+  - type: map
+    mapping:
+      replication:
+        type: map
+        mapping:
+          strategy:
+            type: str
+            enum: ['STATIC', 'DYNAMIC']
+          user_name:
+            type: str
+            pattern: (acoe_omnsc_p.+)
+  - type: map
+    mapping:
+      hdfs:
+        type: map
+        mapping:
+          preserve_block_size:
+            type: bool
+          preserve_permissions:
+            type: bool
+          preserve_replication_count:
+            type: bool
+          remove_missing_files:
+            type: bool
+          skip_checksum_checks:
+            type: bool
+          skip_trash:
+            type: bool
+  - type: map
+    mapping:
+      hive:
+        type: map
+        mapping:
+          replicate_impala_metadata:
+            type: bool
+  - type: map
+    mapping:
+      alert:
+        type: map
+        mapping:
+          on_abort:
+            type: bool
+          on_fail:
+            type: bool
+          on_start:
+            type: bool
+          on_success:
+            type: bool
+  - type: map
+    mapping:
+      abort:
+        type: map
+        mapping:
+          on_error:
+            type: bool

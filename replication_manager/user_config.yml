@@ -1,0 +1,12 @@
+---
+- replication:
+    type: HDFS
+- hdfs:
+    source_path: test_path
+    destination_path: test_path
+- hive:
+    source_db: test_db
+    source_tables: .*
+- schedule:
+    start_time: test_start_time
+    interval_unit: test_interval_unit

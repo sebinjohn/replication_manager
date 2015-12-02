@@ -2,12 +2,17 @@
   "replication": {
     "type": "hdfs"
   },
-  "hdfs": {
+  "hhhh": {
     "source_path": "test_path",
     "destination_path": "destination_path"
   },
   "hive": {
     "source_db": "test_db",
     "source_tables": ".*"
+  },
+  "schedule": {
+    "interval_unit": "DAY",
+    "interval": 1,
+    "start_time": "2015-09-21T07:00:00.000000Z"
   }
 }

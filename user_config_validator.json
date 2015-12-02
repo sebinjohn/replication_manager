@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "replication" : {
+      "type": "object",
+      "properties": {
+        "type":{
+            "type": "string"
+        }
+      }
+    },
+    "hdfs": {
+      "type": "object",
+      "properties": {
+        "source_path": {
+          "type": "string"
+        },
+        "destination_path": {
+          "type": "string"
+        }
+      }
+    },
+    "hive": {
+      "type": "object",
+      "properties": {
+        "source_db": {
+          "type": "string"
+        },
+        "source_tables": {
+          "type": "string"
+        }
+      }
+    },
+    "schedule": {
+      "type": "object",
+      "properties": {
+        "inverval_unit": {
+          "type": "string"
+        },
+        "inverval": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "start_time": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

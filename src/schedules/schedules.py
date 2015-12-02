@@ -35,25 +35,27 @@ class ReplicationSchedule(object):
         """
         repl_type = self.replication_type
         hdfsArguments = {
-            'abortOnError': self.defaults['abort']['on_error']
+            'abortOnError': self.defaults['abort']['on_error'],
             'dryRun': False,
             'mapreduceServiceName': self.defaults['destination']['mapreduce_service_name'],
             'preserveBlockSize': self.defaults['hdfs']['preserve_block_size'],
             'preservePermissions': self.defaults['hdfs']['preserve_permissions'],
             'preserveReplicationCount': self.defaults['hdfs']['preserve_replication_count'],
-            'removeMissingFiles': self.defaults['hdfs']['remove_missing_files']
+            'removeMissingFiles': self.defaults['hdfs']['remove_missing_files'],
             'replicationStrategy': self.defaults['hdfs']['replication_strategy'],
             'skipChecksumChecks': self.defaults['hdfs']['skip_checksum_checks'],
-            'skipTrash' = self.defaults['hdfs']['skip_trash']
+            'skipTrash': self.defaults['hdfs']['skip_trash']
         }
         if repl_type.lower() == 'hdfs':
-            hdfsArguments['sourcePath'] = self.user_data['hdfs']['source_path']
-            hdfsArguments['destinationPath'] = self.user_data['hdfs']['destination_path']
+            hdfsArguments['sourcePath'] = self.user_input['hdfs']['source_path']
+            hdfsArguments['destinationPath'] = self.user_input['hdfs']['destination_path']
             hdfsArguments['sourceService'] = {
                 'clusterName': self.defaults['source']['cluster_name'],
                 'peerName': self.defaults['source']['peer_name'],
                 'serviceName': self.defaults['source']['hdfs_service_name']
             }
+        return hdfsArguments
+
 
     def create_hive_argument(data):
         o = {}
@@ -102,6 +104,8 @@ class ReplicationSchedule(object):
                 'tableName': self.user_input['hive']['hive_tables']
             }
         }
+        return hiveArguments
+
 
     def validate_user_input(self):
         errors = True
